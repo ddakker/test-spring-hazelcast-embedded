@@ -1,0 +1,32 @@
+plugins {
+    id 'java' 
+    id 'war'
+}
+
+sourceCompatibility = 11 
+
+repositories {
+    mavenCentral() 
+}
+
+// SLF4J + Logback
+List loggerSlf4jAndLogback = [
+        'ch.qos.logback:logback-core:1.2.3',
+        'ch.qos.logback:logback-classic:1.2.3',
+        'org.slf4j:slf4j-api:1.7.26',
+        'org.slf4j:jcl-over-slf4j:1.7.26',
+        'org.slf4j:log4j-over-slf4j:1.7.26',
+        'org.codehaus.janino:janino:3.0.13'
+]
+
+dependencies {
+
+    implementation loggerSlf4jAndLogback
+
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: '4.3.30.RELEASE'
+
+	implementation group: 'com.hazelcast', name: 'hazelcast-all', version: '4.2.4'
+
+	compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:util="http://www.springframework.org/schema/util"
+             xmlns:mvc="http://www.springframework.org/schema/mvc"
+             xmlns:task="http://www.springframework.org/schema/task"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:aop="http://www.springframework.org/schema/aop"
+             xsi:schemaLocation="http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                        http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/task
+                        http://www.springframework.org/schema/task/spring-task.xsd
+                        http://www.springframework.org/schema/util
+                        http://www.springframework.org/schema/util/spring-util.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <mvc:annotation-driven />
+    
+    <aop:aspectj-autoproxy />
+    
+    
+    
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    
+    <context:component-scan base-package="pe.kr.ddakker.test.web" />
+    
+<!--     <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <bean class="pe.kr.ddakker.test.web.interceptor.SessionInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors> -->
+    
+    
+    <!-- Controller 에서 반환하는 view 이름의 앞뒤에 jsp 경로를 연결 -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order"  value="2"/> <!-- viewResolver 순서 -->
+        <property name="prefix" value="/WEB-INF/jsp/view/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+</beans:beans>
